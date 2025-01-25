@@ -53,5 +53,30 @@ export const useMotorbikesStore = defineStore('motorbikes', {
         this.loading = false
       }
     },
+    calculateCurrentValue() {
+      this.motorbikes = this.motorbikes.map((moto) => {
+        const purchaseDate = new Date(moto.fechaCompra)
+        const currentDate = new Date()
+
+        let yearsSincePurchase = currentDate.getFullYear() - purchaseDate.getFullYear()
+
+        if (
+          currentDate.getMonth() < purchaseDate.getMonth() ||
+          (currentDate.getMonth() === purchaseDate.getMonth() &&
+            currentDate.getDate() < purchaseDate.getDate())
+        ) {
+          yearsSincePurchase--
+        }
+
+        let currentPrice = moto.precioCompra
+        for (let i = 0; i < yearsSincePurchase; i++) {
+          currentPrice /= 2
+        }
+
+        currentPrice = parseFloat(currentPrice.toFixed(2))
+
+        return { ...moto, currentPrice }
+      })
+    },
   },
 })
