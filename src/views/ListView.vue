@@ -1,5 +1,9 @@
 <template>
-  <h1>List</h1>
+  <div class="q-mx-lg">
+    <list-item />
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ListItem from 'src/components/ListItem.vue'
+</script>
