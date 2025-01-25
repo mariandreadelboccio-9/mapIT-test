@@ -9,4 +9,5 @@ export interface Motorbike {
     longitud: number
   }
   city: string
+  currentPrice: number
 }
