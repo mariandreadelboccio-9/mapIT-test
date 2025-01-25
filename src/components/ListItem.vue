@@ -26,7 +26,7 @@
             </div>
           </div>
           <div class="col-3">
-            <q-btn label="Details" />
+            <q-btn flat label="go to details" class="list-btn" @click="goToDetails(motorbike.id)" />
           </div>
         </div>
       </div>
@@ -37,8 +37,20 @@
 <script setup lang="ts">
 import { useMotorbikesStore } from 'src/stores/motorbikes'
 import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
 
 const store = useMotorbikesStore()
+const router = useRouter()
 
 const { motorbikes } = storeToRefs(store)
+
+const goToDetails = (motorbike: string) => {
+  void router.push({ name: 'details', params: { id: motorbike } })
+}
 </script>
+
+<style scoped lang="scss">
+.list-btn {
+  color: $brand;
+}
+</style>

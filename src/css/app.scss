@@ -1,3 +1,6 @@
-html {
-  background-image: url('src/assets/background-home-1.webp');
+.home-background {
+  background-image: url('https://mapit.me/wp-content/uploads/2024/05/background-home-1.webp');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
 }

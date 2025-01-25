@@ -8,6 +8,12 @@ export const useMotorbikesStore = defineStore('motorbikes', {
     loading: false,
   }),
 
+  getters: {
+    getMotorbikeById: (state) => {
+      return (id: string) => state.motorbikes.find((moto) => moto.id === id)
+    },
+  },
+
   actions: {
     async getMotorbikes() {
       this.loading = true

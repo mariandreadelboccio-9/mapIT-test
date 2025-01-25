@@ -1,7 +1,6 @@
 import { defineConfig } from '#q-app/wrappers'
-import '@quasar/extras/material-icons/material-icons.css'
 
-export default defineConfig((/* ctx */) => {
+export default defineConfig(() => {
   return {
     boot: ['axios'],
     css: ['app.scss'],
