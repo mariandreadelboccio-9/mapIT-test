@@ -1,13 +1,15 @@
 <template>
-  <div class="row q-mt-xl">
-    <div class="col-6">
+  <div>
+    <h3>{{ selectedMotorbike?.nombre }}</h3>
+  </div>
+  <div class="row q-mt-xl justify-center">
+    <div class="col-xs-12 col-lg-6">
       <q-img
         src="https://mapit.me/wp-content/uploads/2024/05/background-notifications-3.webp"
-        width="600px"
         class="moto-img"
       />
     </div>
-    <div class="column">
+    <div class="column q-mt-md-sm">
       <div class="row justify-around">
         <q-btn
           v-for="(option, index) in options"
@@ -19,7 +21,7 @@
           flat
         />
       </div>
-      <div class="q-pt-md">
+      <div class="q-px-md q-pt-md">
         <div v-if="selectedOption === 'location'">
           <moto-map :latitud="coordinates?.latitud" :longitud="coordinates?.longitud" />
         </div>
@@ -28,13 +30,13 @@
             >{{ selectedMotorbike?.currentPrice }} €</span
           >
         </div>
-        <div v-else-if="selectedOption === 'details'" class="details-card">
+        <div v-else-if="selectedOption === 'details'" class="details-card q-mb-xl-sm">
           <details-component :motorbike="selectedMotorbike" />
         </div>
       </div>
     </div>
   </div>
-  <div class="q-mt-xl">
+  <div class="q-my-xl">
     <q-btn color="primary" class="contact-btn" label="Contact" @click="openModal" />
   </div>
   <contact-modal />
@@ -75,6 +77,7 @@ onMounted(() => {
 <style scoped lang="scss">
 .moto-img {
   border-radius: 10px;
+  width: 600px;
 }
 .active-btn {
   background: $brand;
@@ -102,5 +105,12 @@ onMounted(() => {
 .contact-btn {
   width: 300px;
   height: 50px;
+}
+
+@media (max-width: 599px) {
+  .moto-img,
+  .details-card {
+    width: 90vw;
+  }
 }
 </style>
