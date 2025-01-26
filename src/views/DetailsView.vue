@@ -28,11 +28,14 @@
             >{{ selectedMotorbike?.currentPrice }} €</span
           >
         </div>
-        <div v-else-if="selectedOption === 'details'">
-          <p>DETAILS</p>
+        <div v-else-if="selectedOption === 'details'" class="details-card">
+          <details-component :motorbike="selectedMotorbike" />
         </div>
       </div>
     </div>
+  </div>
+  <div class="q-mt-xl">
+    <q-btn color="primary" class="contact-btn" label="Contact" />
   </div>
 </template>
 
@@ -41,7 +44,8 @@ import { useMotorbikesStore } from 'src/stores/motorbikes'
 import { useRoute } from 'vue-router'
 import MotoMap from 'src/components/MotoMap.vue'
 import type { Motorbike } from 'src/common/types'
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
+import DetailsComponent from 'src/components/DetailsComponent.vue'
 
 const store = useMotorbikesStore()
 const route = useRoute()
@@ -55,8 +59,11 @@ const selectedOption = ref('location')
 
 const isSelected = (option: string) => {
   selectedOption.value = option
-  if (selectedOption.value === 'price') store.calculateCurrentValue()
 }
+
+onMounted(() => {
+  store.motorbikeExtraData()
+})
 </script>
 
 <style scoped lang="scss">
@@ -85,5 +92,9 @@ const isSelected = (option: string) => {
   color: white;
   font-size: 50px;
   mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+}
+.contact-btn {
+  width: 300px;
+  height: 50px;
 }
 </style>
