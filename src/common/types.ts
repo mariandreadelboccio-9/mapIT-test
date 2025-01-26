@@ -10,4 +10,5 @@ export interface Motorbike {
   }
   city: string
   currentPrice: number
+  text: string | undefined
 }

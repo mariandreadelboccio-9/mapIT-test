@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { getMotorbikes, getMotorbikeCity } from 'src/common/apiCalls'
 import type { Motorbike } from 'src/common/types'
+import { motorbikeTexts } from 'src/common/texts'
 
 export const useMotorbikesStore = defineStore('motorbikes', {
   state: () => ({
@@ -53,7 +54,7 @@ export const useMotorbikesStore = defineStore('motorbikes', {
         this.loading = false
       }
     },
-    calculateCurrentValue() {
+    motorbikeExtraData() {
       this.motorbikes = this.motorbikes.map((moto) => {
         const purchaseDate = new Date(moto.fechaCompra)
         const currentDate = new Date()
@@ -75,7 +76,9 @@ export const useMotorbikesStore = defineStore('motorbikes', {
 
         currentPrice = parseFloat(currentPrice.toFixed(2))
 
-        return { ...moto, currentPrice }
+        const text = motorbikeTexts.find((text) => text.id === moto.id)
+
+        return { ...moto, currentPrice, text: text?.text }
       })
     },
   },
