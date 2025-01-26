@@ -7,6 +7,7 @@ export const useMotorbikesStore = defineStore('motorbikes', {
   state: () => ({
     motorbikes: [] as Motorbike[],
     loading: false,
+    isModalOpen: false,
   }),
 
   getters: {
