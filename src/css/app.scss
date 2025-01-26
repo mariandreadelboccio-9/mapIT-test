@@ -4,3 +4,12 @@
   background-position: center;
   min-height: 100vh;
 }
+
+@media (max-width: 1024px) {
+  .q-mt-md-sm {
+    margin-top: 24px;
+  }
+  .q-mb-xl-sm {
+    margin-bottom: 40px;
+  }
+}

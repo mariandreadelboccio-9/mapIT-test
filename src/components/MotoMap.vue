@@ -23,7 +23,13 @@ onMounted(() => {
 
 <style scoped>
 #map {
-  height: 400px;
+  height: 380px;
   width: 600px;
+}
+
+@media (max-width: 599px) {
+  #map {
+    width: 90vw;
+  }
 }
 </style>
