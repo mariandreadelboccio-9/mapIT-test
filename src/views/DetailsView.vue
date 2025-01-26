@@ -35,8 +35,9 @@
     </div>
   </div>
   <div class="q-mt-xl">
-    <q-btn color="primary" class="contact-btn" label="Contact" />
+    <q-btn color="primary" class="contact-btn" label="Contact" @click="openModal" />
   </div>
+  <contact-modal />
 </template>
 
 <script setup lang="ts">
@@ -46,6 +47,7 @@ import MotoMap from 'src/components/MotoMap.vue'
 import type { Motorbike } from 'src/common/types'
 import { ref, computed, onMounted } from 'vue'
 import DetailsComponent from 'src/components/DetailsComponent.vue'
+import ContactModal from 'src/components/ContactModal.vue'
 
 const store = useMotorbikesStore()
 const route = useRoute()
@@ -59,6 +61,10 @@ const selectedOption = ref('location')
 
 const isSelected = (option: string) => {
   selectedOption.value = option
+}
+
+const openModal = () => {
+  store.$state.isModalOpen = true
 }
 
 onMounted(() => {
