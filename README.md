@@ -3,7 +3,9 @@
 This is an example app to sell motorbikes. Including a list of motorbikes with some of their main data and a view of each motorbike's details.
 Details has the current location, current price and some other details.
 
-The project has been made in vueJS with quasar.
+The project has been made in vueJS with quasar and testing with vitest.
+
+The only file that includes test is `MotoMap.vue`.
 
 ## Install the dependencies
 
